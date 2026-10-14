@@ -6,7 +6,8 @@
 
 <p align="center">
   <b>Your iPad, on whichever side you put it.</b><br>
-  A tiny menu bar app that moves your iPad to the left or right of your Mac in Universal Control, automatically.
+  A tiny menu bar app that moves your iPad to the left or right of your Mac in Universal Control, automatically.<br>
+  <a href="https://emcar-alt.github.io/Edgewise/">Website</a> · <a href="https://github.com/emcar-alt/Edgewise/releases/latest">Download</a>
 </p>
 
 <p align="center">
@@ -57,7 +58,7 @@ xattr -dr com.apple.quarantine /Applications/Edgewise.app
 **Build from source:** all you need is the Xcode Command Line Tools (`xcode-select --install`), not Xcode itself.
 
 ```bash
-git clone https://github.com/ethanmathias/Edgewise.git
+git clone https://github.com/emcar-alt/Edgewise.git
 cd Edgewise
 make install
 ```
