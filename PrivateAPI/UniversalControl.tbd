@@ -1,0 +1,45 @@
+--- !tapi-tbd
+tbd-version:     4
+targets:         [ arm64-macos, arm64e-macos, x86_64-macos ]
+install-name:    '/System/Library/PrivateFrameworks/UniversalControl.framework/Versions/A/UniversalControl'
+exports:
+  - targets:         [ arm64-macos, arm64e-macos, x86_64-macos ]
+    symbols:         [
+                       '_$s16UniversalControl0aB13ConfigurationV10GradedLinkV4linkAA0abE0Vvg',
+                       '_$s16UniversalControl0aB13ConfigurationV10GradedLinkV9timestampSdvg',
+                       '_$s16UniversalControl0aB13ConfigurationV10GradedLinkVMa',
+                       '_$s16UniversalControl0aB13ConfigurationV10GradedLinkVMn',
+                       '_$s16UniversalControl0aB13ConfigurationV11addingLinksyACSayAA0aB4LinkVGF',
+                       '_$s16UniversalControl0aB13ConfigurationV11prettyPrintSSyF',
+                       '_$s16UniversalControl0aB13ConfigurationV13removingLinks5whereACSbAA0aB4LinkVXE_tF',
+                       '_$s16UniversalControl0aB13ConfigurationV4dataAC10Foundation4DataV_tKcfC',
+                       '_$s16UniversalControl0aB13ConfigurationV5linksSayAC10GradedLinkVGyF',
+                       '_$s16UniversalControl0aB13ConfigurationV6digest10Foundation4DataVvg',
+                       '_$s16UniversalControl0aB13ConfigurationV7encoded10Foundation4DataVyKF',
+                       '_$s16UniversalControl0aB13ConfigurationVMa',
+                       '_$s16UniversalControl0aB4EdgeO11descriptionSSvg',
+                       '_$s16UniversalControl0aB4EdgeO11stringValueACSgSS_tcfC',
+                       '_$s16UniversalControl0aB4EdgeO8invertedACvg',
+                       '_$s16UniversalControl0aB4LinkV11descriptionSSvg',
+                       '_$s16UniversalControl0aB4LinkV8EndpointV6anchorAA0aB6AnchorVvg',
+                       '_$s16UniversalControl0aB4LinkV8EndpointV6deviceAA0aB8DeviceIDVvg',
+                       '_$s16UniversalControl0aB4LinkV8EndpointV7display6anchorAeA0aB9DisplayIDV_AA0aB6AnchorVtcfC',
+                       '_$s16UniversalControl0aB4LinkV8EndpointV7displayAA0aB9DisplayIDVvg',
+                       '_$s16UniversalControl0aB4LinkV8EndpointVMa',
+                       '_$s16UniversalControl0aB4LinkV8EndpointVMn',
+                       '_$s16UniversalControl0aB4LinkV9endpoint19endpoint2A2C8EndpointV_AGtcfC',
+                       '_$s16UniversalControl0aB4LinkV9endpoint1AC8EndpointVvg',
+                       '_$s16UniversalControl0aB4LinkV9endpoint2AC8EndpointVvg',
+                       '_$s16UniversalControl0aB4LinkVMa',
+                       '_$s16UniversalControl0aB4LinkVMn',
+                       '_$s16UniversalControl0aB4UUIDV4uuidAC10Foundation0C0V_tcfC',
+                       '_$s16UniversalControl0aB4UUIDV9uuidValue10Foundation0C0Vvg',
+                       '_$s16UniversalControl0aB6AnchorV4edge6offsetAcA0aB4EdgeO_SdtcfC',
+                       '_$s16UniversalControl0aB6AnchorV4edgeAA0aB4EdgeOvg',
+                       '_$s16UniversalControl0aB6AnchorV6offsetSdvg',
+                       '_$s16UniversalControl0aB6AnchorVMa',
+                       '_$s16UniversalControl0aB8DeviceIDV4uuidAC10Foundation4UUIDV_tcfC',
+                       '_$s16UniversalControl0aB8DeviceIDV9uuidValue10Foundation4UUIDVvg',
+                       '_$s16UniversalControl0aB9DisplayIDV06deviceD011displayUUIDAcA0ab6DeviceD0V_AA0abG0VtcfC'
+                     ]
+...

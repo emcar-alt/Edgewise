@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Edgewise for Universal Control</title>
+  <meta name="description" content="Edgewise is a free macOS menu bar app that moves your iPad to the left or right of your Mac in Universal Control automatically.">
+  <link rel="icon" href="logo.png">
+  <meta property="og:title" content="Edgewise">
+  <meta property="og:description" content="Your iPad, on whichever side you put it. Automatic left/right placement for Universal Control.">
+  <meta property="og:image" content="images/hero.png">
+  <style>
+    :root {
+      --bg: #f7f8fc;
+      --surface: #ffffff;
+      --text: #14162b;
+      --muted: #5b6078;
+      --line: rgba(20, 22, 43, 0.09);
+      --indigo: #4338ca;
+      --blue: #1c8fd6;
+      --teal: #2bd4c0;
+      --code: #eef0f8;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0d0f1c;
+        --surface: #151829;
+        --text: #eef0fb;
+        --muted: #a2a7c2;
+        --line: rgba(255, 255, 255, 0.09);
+        --code: #1c2036;
+      }
+    }
+    * { box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font: 17px/1.6 -apple-system, BlinkMacSystemFont, "SF Pro Text", "Inter", "Segoe UI", sans-serif;
+    }
+    a { color: var(--blue); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+
+    header.hero {
+      background: linear-gradient(118deg, var(--indigo) 0%, var(--blue) 62%, var(--teal) 100%);
+      color: #fff;
+      padding: 72px 0 0;
+      overflow: hidden;
+    }
+    .hero .wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: end; }
+    .hero h1 { font-size: 64px; line-height: 1.05; margin: 20px 0 14px; letter-spacing: -0.02em; }
+    .hero p.lede { font-size: 22px; opacity: 0.92; margin: 0 0 28px; max-width: 30ch; }
+    .hero .icon { width: 96px; height: 96px; filter: drop-shadow(0 10px 24px rgba(0,0,0,0.25)); }
+    .hero .copy { padding-bottom: 72px; }
+    .hero .shot { align-self: end; }
+    .hero .shot img { width: 100%; max-width: 420px; display: block; margin: 0 auto -6px; filter: drop-shadow(0 24px 48px rgba(10, 15, 46, 0.35)); }
+    .buttons { display: flex; gap: 12px; flex-wrap: wrap; }
+    .button {
+      display: inline-block; padding: 12px 22px; border-radius: 12px; font-weight: 600;
+      background: #fff; color: var(--indigo);
+    }
+    .button.ghost { background: rgba(255,255,255,0.16); color: #fff; border: 1px solid rgba(255,255,255,0.35); }
+    .button:hover { text-decoration: none; filter: brightness(1.04); }
+    .meta { margin-top: 14px; font-size: 14px; opacity: 0.8; }
+
+    section { padding: 72px 0; border-bottom: 1px solid var(--line); }
+    h2 { font-size: 34px; letter-spacing: -0.01em; margin: 0 0 12px; }
+    .sub { color: var(--muted); max-width: 62ch; margin: 0 0 36px; }
+
+    .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .card { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 22px; }
+    .card h3 { margin: 0 0 6px; font-size: 18px; }
+    .card p { margin: 0; color: var(--muted); font-size: 15px; }
+    .card .glyph { font-size: 22px; margin-bottom: 10px; display: block; }
+
+    .steps { counter-reset: step; display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .step { position: relative; padding-top: 44px; }
+    .step::before {
+      counter-increment: step; content: counter(step);
+      position: absolute; top: 0; left: 0; width: 32px; height: 32px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--indigo), var(--blue)); color: #fff;
+      display: grid; place-items: center; font-weight: 700; font-size: 15px;
+    }
+    .step h3 { margin: 0 0 6px; font-size: 18px; }
+    .step p { margin: 0; color: var(--muted); font-size: 15px; }
+
+    kbd {
+      font: 600 13px/1 -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--code); border: 1px solid var(--line); border-bottom-width: 2px;
+      border-radius: 6px; padding: 3px 7px;
+    }
+    pre {
+      background: var(--code); border: 1px solid var(--line); border-radius: 14px;
+      padding: 18px 20px; overflow-x: auto; font-size: 14px; line-height: 1.55;
+    }
+    code { font-family: ui-monospace, "SF Mono", Menlo, monospace; }
+
+    .split { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 40px; align-items: center; }
+    .split img { width: 100%; max-width: 380px; display: block; margin: 0 auto; }
+    footer { padding: 40px 0 60px; color: var(--muted); font-size: 14px; }
+
+    @media (max-width: 860px) {
+      .hero .wrap, .split { grid-template-columns: 1fr; }
+      .hero h1 { font-size: 46px; }
+      .hero .copy { padding-bottom: 8px; }
+      .grid, .steps { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="wrap">
+      <div class="copy">
+        <img class="icon" src="logo.png" alt="">
+        <h1>Edgewise</h1>
+        <p class="lede">Your iPad, on whichever side you put it. Automatic left/right placement for Universal Control.</p>
+        <div class="buttons">
+          <a class="button" href="https://github.com/ethanmathias/Edgewise/releases/latest">Download for macOS</a>
+          <a class="button ghost" href="https://github.com/ethanmathias/Edgewise">View on GitHub</a>
+        </div>
+        <div class="meta">Free and open source · macOS 13 or later · Apple Silicon &amp; Intel</div>
+      </div>
+      <div class="shot">
+        <picture>
+          <source srcset="images/popover-linked-right-dark.png" media="(prefers-color-scheme: dark)">
+          <img src="images/popover-linked-right-light.png" alt="The Edgewise window showing the iPad linked on the right">
+        </picture>
+      </div>
+    </div>
+  </header>
+
+  <section>
+    <div class="wrap">
+      <h2>Move the iPad. Edgewise follows.</h2>
+      <p class="sub">Universal Control remembers which side your iPad was on and never checks again. Put it on the other side of your MacBook and the pointer keeps leaving through the wrong edge. Edgewise notices where you're actually reaching and re-links the iPad there, in a fraction of a second.</p>
+      <div class="steps">
+        <div class="step"><h3>Put your iPad anywhere</h3><p>Left of your MacBook today, right of it tomorrow. Nothing to change in System Settings.</p></div>
+        <div class="step"><h3>Push toward it</h3><p>Move the pointer past the edge where the iPad now sits, like you would to cross over.</p></div>
+        <div class="step"><h3>Keep going</h3><p>Edgewise moves the link while you push, so the same motion lands on the iPad.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2>Small app, no fuss</h2>
+      <p class="sub">It lives in the menu bar, needs no permissions, and never touches the network.</p>
+      <div class="grid">
+        <div class="card"><span class="glyph">↔︎</span><h3>Follow my pointer</h3><p>Detects a deliberate push past the empty edge. Light, Medium or Firm, so hitting a scroll bar doesn't count.</p></div>
+        <div class="card"><span class="glyph">⌘</span><h3>Shortcuts</h3><p><kbd>⌃⌥⌘←</kbd> and <kbd>⌃⌥⌘→</kbd> move the iPad left or right from anywhere.</p></div>
+        <div class="card"><span class="glyph">⚡︎</span><h3>Automation</h3><p><code>edgewise://move/left</code>, <code>/right</code> and <code>edgewise://swap</code> for Shortcuts, Raycast or Alfred.</p></div>
+        <div class="card"><span class="glyph">▭▭</span><h3>Multiple displays</h3><p>The iPad attaches to the display you pushed against, or the outermost one on that side.</p></div>
+        <div class="card"><span class="glyph">›_</span><h3>Command line</h3><p><code>edgewisectl</code> prints status as JSON, moves the iPad, and backs up or restores your arrangement.</p></div>
+        <div class="card"><span class="glyph">🔒</span><h3>Private by design</h3><p>No Accessibility, Input Monitoring or Screen Recording access. No analytics, no network.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap split">
+      <div>
+        <h2>How it works</h2>
+        <p class="sub" style="margin-bottom:18px">A Mac can't sense where an iPad physically sits, so Edgewise reads intent: a long, continuous push against an outer screen edge means "my iPad is over here".</p>
+        <p class="sub" style="margin-bottom:0">To move it, Edgewise's helper asks macOS's own Universal Control framework to rewrite the stored arrangement, so every hash is computed by Apple's code. The Universal Control agent picks the change up immediately and syncs it to your iPad. The details are in the <a href="https://github.com/ethanmathias/Edgewise#how-it-works">README</a>.</p>
+      </div>
+      <picture>
+        <source srcset="images/overlay-dark.png" media="(prefers-color-scheme: dark)">
+        <img src="images/overlay-light.png" alt="Overlay confirming the iPad is now on the right">
+      </picture>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2>Install</h2>
+      <p class="sub">Download the latest release, unzip, and drag Edgewise to Applications. It isn't notarized yet, so right-click it and choose Open the first time. Or build it with just the Command Line Tools:</p>
+<pre><code>git clone https://github.com/ethanmathias/Edgewise.git
+cd Edgewise
+make install</code></pre>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">MIT License · © 2026 Ethan Mathias · Not affiliated with Apple. Universal Control, iPad and Mac are trademarks of Apple Inc.</div>
+  </footer>
+</body>
+</html>
